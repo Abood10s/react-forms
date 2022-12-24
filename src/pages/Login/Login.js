@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./login.css";
 import joy from "../../assets/joystick.png";
-import logo from "../../assets/logo2.png";
 import Header from "../../components/Header/Header";
 import google from "../../assets/google.png";
 import github from "../../assets/github.png";
 import twitter from "../../assets/twitter.png";
+import quote2 from "../../assets/quote2.png";
+
 import linkedin from "../../assets/linkedin.png";
 import Form from "../../components/form/Form";
+import Logo from "../../components/Logo/Logo";
 
 export default class Login extends Component {
   render() {
@@ -15,14 +17,12 @@ export default class Login extends Component {
       <div className="login-all-cont">
         <div className="login-cont">
           <div className="text">
-            <div className="title-cont">
-              <img src={logo} alt="gamers logo" className="logo" />
-              <p className="title">Gamers</p>
-            </div>
+            <Logo />
             <div className="quote">
-              " I always observe the people who pass by when I ride an
-              escalator. I'll never see most of them again, so I imagine a lot
-              of things about their lives... about the day ahead of them.
+              <img src={quote2} alt="" className="login-quote" />" I always
+              observe the people who pass by when I ride an escalator. I'll
+              never see most of them again, so I imagine a lot of things about
+              their lives... about the day ahead of them.
             </div>
             <div className="img">
               <p>Hideo Kojima</p>
@@ -53,9 +53,9 @@ export default class Login extends Component {
             <div className="or">
               <p className="or-p">or</p>
             </div>
-            <Form />
+            <Form btn="Login" />
             <p>
-              Don’t have an account? <span>Register</span>{" "}
+              Don’t have an account? <span>Register</span>
             </p>
           </div>
         </div>

@@ -1,0 +1,15 @@
+.title-cont {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-family: 'Righteous';
+    color: #1565D8;
+    font-size: 2rem;
+}
+
+.logo {
+    height: 3rem;
+}

@@ -1,0 +1,144 @@
+.register-all-cont {
+    display: flex;
+    width: 80%;
+    height: 95vh;
+    margin: 0.5rem auto;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
+    gap: 1em;
+}
+
+.interface {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+.inter-img {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    object-fit: inherit;
+}
+
+.reg-text {
+    background-color: #1565D8;
+    opacity: 0.85;
+    color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    height: 100%;
+    gap: 5em;
+}
+
+.text-p {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.reg-quote,
+.edge {
+    height: 12px;
+    margin-bottom: -1rem;
+}
+
+.text-edge {
+    display: flex;
+    gap: 11em;
+    align-items: center;
+}
+
+.controls {
+    flex: 2;
+    padding: 2rem 0 1rem 0;
+}
+
+.line {
+    height: 1px;
+    background-color: #F5F5F5;
+    width: 50%;
+    margin: 1em auto;
+}
+
+.or {
+    position: relative;
+    z-index: 1;
+    padding: 0 2rem;
+    width: 50%;
+    text-align: center;
+    margin: 0.5rem auto;
+}
+
+.or::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    left: 0;
+    width: 45%;
+    height: 2px;
+    background-color: #F5F5F5;
+}
+
+.or::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: 0;
+    width: 45%;
+    height: 2px;
+    background-color: #F5F5F5;
+}
+
+#radio {
+    margin: 0 0.5rem 0 0;
+}
+
+.reg-login-btn {
+    display: block;
+    display: flex;
+    justify-content: initial;
+    gap: 7em;
+    align-items: center;
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: auto;
+    padding: 0.7rem 4em;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
+    font-weight: bold;
+}
+
+.reg-google {
+    height: 20px;
+}
+
+.back {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.reg-arrow {
+    height: 14px;
+}
+
+.back-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}

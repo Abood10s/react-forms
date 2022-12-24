@@ -15,24 +15,8 @@
     height: 100%;
 }
 
-.title-cont {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.title {
-    font-family: 'Righteous';
-    color: #1565D8;
-    font-size: 2rem;
-}
-
 .joy {
     height: 350px;
-}
-
-.logo {
-    height: 3rem;
 }
 
 .text {
@@ -48,6 +32,12 @@
     width: 75%;
     color: #696F79;
     font-weight: 550;
+}
+
+.login-quote {
+    display: block;
+    margin: 0 0 0.5rem 0;
+    height: 12px;
 }
 
 .img {
