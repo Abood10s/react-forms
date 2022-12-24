@@ -1,0 +1,16 @@
+.header-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.header-h {
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+.header-p {
+    color: #8692A6;
+    font-size: 14px;
+}

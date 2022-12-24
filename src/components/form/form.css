@@ -1,0 +1,34 @@
+.input-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input {
+    display: block;
+    padding: 0.7rem 0.6rem;
+    border: 1px solid #8692A6;
+    border-radius: 6px;
+    outline: none;
+    caret-color: #1565D8;
+}
+
+.input:focus {
+    border: 1px solid #1565D8;
+}
+
+.form-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+    width: 50%;
+    margin: auto;
+}
+
+@media screen and (max-width:1200px) {
+    .form-cont {
+        width: 100%;
+    }
+}

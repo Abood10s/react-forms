@@ -1,7 +1,11 @@
+import Login from "./pages/Login/Login";
+// import Register from "./pages/Register/Register";
+
 function App() {
   return (
     <div className="App">
-      <h2>lol</h2>
+      {/* <Register /> */}
+      <Login />
     </div>
   );
 }
