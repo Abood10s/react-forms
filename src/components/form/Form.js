@@ -18,42 +18,52 @@ class Form extends Component {
     strength: 0,
     color: "red",
     status: "",
+    error: "",
   };
   defaults = {
     email: "",
     password: "",
     repeatPassword: "",
     checkbox: false,
+    strength: 0,
+    color: "transparent",
+    status: "",
+    error: "",
   };
+
   validate = () => {
     if (strongRegex.test(this.state.password)) {
       this.setState({
-        ...this.state,
         color: "#7CFC00",
         strength: "100%",
         status: "Strong",
       });
     } else if (mediumRegex.test(this.state.password)) {
       this.setState({
-        ...this.state,
         color: "#FFC107",
         strength: "50%",
         status: "medium",
       });
     } else if (this.state.password.length > 0) {
       this.setState({
-        ...this.state,
         color: "red",
         strength: "20%",
         status: "weak",
       });
     } else {
-      this.setState({ ...this.state, strength: "0px", status: "" });
+      this.setState({ strength: "0px", status: "" });
     }
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ ...this.defaults });
+    if (this.state.status === "weak") {
+      this.setState({ error: "please enter stronger password" });
+    } else if (
+      this.state.status === "medium" ||
+      this.state.status === "strong"
+    ) {
+      this.setState({ ...this.defaults });
+    }
   };
   handleChange = (e) => {
     const { id, value } = e.target;
@@ -102,6 +112,8 @@ class Form extends Component {
             onKeyUp={this.validate}
             value={this.state.password}
           />
+          {this.state.error && <p className="error-p">{this.state.error}</p>}
+
           <div
             className="strength"
             style={{
@@ -149,7 +161,7 @@ class Form extends Component {
             <label htmlFor="checkbox">I agree to terms & conditions</label>
           </section>
         )}
-        <Button title={btn} />
+        <Button title={btn} check={this.checkPasswordStrength} />
       </form>
     );
   }
