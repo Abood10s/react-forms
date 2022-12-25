@@ -76,6 +76,7 @@ class Form extends Component {
             Your Email{star}
           </label>
           <input
+            name="email"
             required
             type="email"
             placeholder="write your email"
@@ -90,6 +91,7 @@ class Form extends Component {
             Your Password{star}
           </label>
           <input
+            name="password"
             required
             type="password"
             placeholder="password"
@@ -97,7 +99,7 @@ class Form extends Component {
             id="password"
             minLength={1}
             onChange={this.handleChange}
-            onKeyDown={this.validate}
+            onKeyUp={this.validate}
             value={this.state.password}
           />
           <div
@@ -121,6 +123,7 @@ class Form extends Component {
                 {star}
               </label>
               <input
+                name="repeatPassword"
                 required
                 type="password"
                 placeholder={status}
@@ -136,6 +139,7 @@ class Form extends Component {
         {check && (
           <section className="agree">
             <input
+              name="agreed"
               type="checkbox"
               id="checkbox"
               onChange={this.onValueChange}
