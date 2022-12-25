@@ -6,6 +6,7 @@ import google from "../../assets/google.png";
 import github from "../../assets/github.png";
 import twitter from "../../assets/twitter.png";
 import quote2 from "../../assets/quote2.png";
+import logo from "../../assets/logo2.png";
 
 import linkedin from "../../assets/linkedin.png";
 import Form from "../../components/form/Form";
@@ -17,7 +18,7 @@ export default class Login extends Component {
       <div className="login-all-cont">
         <div className="login-cont">
           <div className="text">
-            <Logo />
+            <Logo img={logo} />
             <div className="quote">
               <img src={quote2} alt="" className="login-quote" />" I always
               observe the people who pass by when I ride an escalator. I'll

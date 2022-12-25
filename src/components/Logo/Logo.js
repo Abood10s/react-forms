@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "../../assets/logo2.png";
 import "./logo.css";
 
 export default class Logo extends Component {
@@ -7,8 +6,10 @@ export default class Logo extends Component {
     return (
       <div>
         <div className="title-cont">
-          <img src={logo} alt="gamers logo" className="logo" />
-          <p className="title">Gamers</p>
+          <img src={this.props.img} alt="gamers logo" className="logo" />
+          <p className="title" style={{ color: `${this.props.color}` }}>
+            Gamers
+          </p>
         </div>
       </div>
     );

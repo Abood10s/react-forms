@@ -3,22 +3,21 @@ import Logo from "../../components/Logo/Logo";
 import interfaceimg from "../../assets/controller.png";
 import google from "../../assets/google.png";
 import arrow from "../../assets/arrow.png";
+import whitelogo from "../../assets/whitelogo.png";
 import quote from "../../assets/quote.png";
 import edge from "../../assets/edge.png";
 import Form from "../../components/form/Form";
 import Header from "../../components/Header/Header";
-// import Button from "../../components/Button/Button";
 
 import "./register.css";
 export default class Register extends Component {
   render() {
-    // Register<i class="fa-regular fa-eye"></i>
     return (
       <div className="register-all-cont">
         <div className="interface">
           <img src={interfaceimg} alt="" className="inter-img" />
           <div className="reg-text">
-            <Logo />
+            <Logo color="#FFF" img={whitelogo} />
             <div className="text-p">
               <p>
                 <img src={quote} alt="" className="reg-quote" />

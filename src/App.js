@@ -1,4 +1,4 @@
-import Login from "./pages/Login/Login";
+// import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { Component } from "react";
 class App extends Component {
