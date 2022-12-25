@@ -51,7 +51,7 @@ export default class Register extends Component {
           <div className="or">
             <p className="or-p">or</p>
           </div>
-          <button className="reg-login-btn">
+          <button className="reg-login-btn" onClick={this.props.handleRoute}>
             <img src={google} alt="" className="reg-google" /> login
           </button>
         </div>

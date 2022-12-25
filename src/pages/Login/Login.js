@@ -56,7 +56,8 @@ export default class Login extends Component {
             </div>
             <Form btn="Login" />
             <p>
-              Don’t have an account? <span>Register</span>
+              Don’t have an account?
+              <span onClick={this.props.handleRoute}>Register</span>
             </p>
           </div>
         </div>
