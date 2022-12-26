@@ -150,4 +150,23 @@ p>span:hover {
         gap: 2em;
         padding: 2rem 2rem 0 4rem;
     }
+    .form {
+        width: 80%;
+    }
+    .icons {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .login-all-cont {
+        margin: auto;
+        width: 100%;
+    }
+    .login-cont {
+        flex-direction: column-reverse;
+        margin: auto;
+        gap: 2em;
+        padding: 2rem 2rem 0 4rem;
+    }
 }

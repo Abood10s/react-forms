@@ -3,19 +3,19 @@ import Register from "./pages/Register/Register";
 import { Component } from "react";
 class App extends Component {
   state = {
-    flag: true,
+    view: true,
   };
 
   handleRoute = () => {
-    this.setState({
-      flag: !this.state.flag,
-    });
+    this.setState((prevstate) => ({
+      view: !prevstate.view,
+    }));
   };
 
   render() {
     return (
       <div className="App">
-        {this.state.flag ? (
+        {this.state.view ? (
           <Register handleRoute={this.handleRoute} />
         ) : (
           <Login handleRoute={this.handleRoute} />

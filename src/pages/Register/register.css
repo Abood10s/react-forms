@@ -142,3 +142,48 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+@media screen and (max-width:1200px) {
+    .register-all-cont {
+        height: auto;
+        width: 50%;
+        flex-direction: column-reverse;
+        margin: auto;
+        gap: 2em;
+        padding: 1rem;
+    }
+    .reg-login-btn {
+        width: 100%;
+    }
+    .or {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .register-all-cont {
+        height: auto;
+        width: 100%;
+        flex-direction: column-reverse;
+        margin: auto;
+        gap: 2em;
+        padding: 1rem;
+    }
+    .reg-login-btn {
+        width: 100%;
+        justify-content: initial;
+    }
+    .or {
+        margin: 1rem auto;
+    }
+    .flex-2 {
+        flex: 0.5;
+    }
+    .line {
+        margin: 10px 0;
+        width: 100%;
+    }
+    .controls {
+        margin: 0.5rem 0;
+    }
+}
