@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "../Button/Button";
 import "./form.css";
+import * as yup from "yup";
 
 //Regex
 const strongRegex = new RegExp(
@@ -9,24 +10,36 @@ const strongRegex = new RegExp(
 const mediumRegex = new RegExp(
   "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
 );
+let schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required(),
+  repeatpassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required(),
+  checkbox: yup
+    .bool()
+    .oneOf([true], "You must agree to the terms and conditions")
+    .required(),
+});
+const defaults = {
+  email: "",
+  password: "",
+  repeatpassword: "",
+  checkbox: false,
+  strength: 0,
+  color: "transparent",
+  status: "",
+  error: "",
+};
 class Form extends Component {
   state = {
     email: "",
     password: "",
-    repeatPassword: "",
+    repeatpassword: "",
     checkbox: false,
     strength: 0,
     color: "red",
-    status: "",
-    error: "",
-  };
-  defaults = {
-    email: "",
-    password: "",
-    repeatPassword: "",
-    checkbox: false,
-    strength: 0,
-    color: "transparent",
     status: "",
     error: "",
   };
@@ -58,16 +71,33 @@ class Form extends Component {
     e.preventDefault();
     if (this.state.status === "weak") {
       this.setState({ error: "please enter stronger password" });
-    } else if (
-      this.state.status === "medium" ||
-      this.state.status === "strong"
-    ) {
-      this.setState({ ...this.defaults });
     }
+    schema
+      .validate({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        repeatpassword: this.state.repeatpassword,
+        checkbox: this.state.checkbox,
+      })
+      .then((val) => {
+        this.setState({ ...defaults });
+      })
+      .catch(function (err) {
+        alert(err.errors);
+      });
   };
   handleChange = (e) => {
-    const { id, value } = e.target;
-    this.setState({ [id]: value });
+    const { id, value, checked } = e.target;
+    if (id === "checkbox") {
+      this.setState({
+        [id]: checked,
+      });
+    } else {
+      this.setState({
+        [id]: value,
+      });
+    }
   };
   onValueChange = () => {
     this.setState((prevState) => {
@@ -87,7 +117,6 @@ class Form extends Component {
           </label>
           <input
             name="email"
-            required
             type="email"
             placeholder="write your email"
             className="input"
@@ -102,7 +131,6 @@ class Form extends Component {
           </label>
           <input
             name="password"
-            required
             type="password"
             placeholder="password"
             className="input"
@@ -130,20 +158,19 @@ class Form extends Component {
           </div>
           {newField && (
             <>
-              <label htmlFor="repeatPassword" className="input-label">
+              <label htmlFor="repeatpassword" className="input-label">
                 {status}
                 {star}
               </label>
               <input
-                name="repeatPassword"
-                required
+                name="repeatpassword"
                 type="password"
                 placeholder={status}
                 className="input"
-                id="repeatPassword"
+                id="repeatpassword"
                 minLength={1}
                 onChange={this.handleChange}
-                value={this.state.repeatPassword}
+                value={this.state.repeatpassword}
               />
             </>
           )}
@@ -156,7 +183,6 @@ class Form extends Component {
               id="checkbox"
               onChange={this.onValueChange}
               checked={this.state.checkbox}
-              required
             />
             <label htmlFor="checkbox">I agree to terms & conditions</label>
           </section>
