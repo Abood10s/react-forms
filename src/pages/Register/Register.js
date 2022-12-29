@@ -6,7 +6,7 @@ import arrow from "../../assets/arrow.png";
 import whitelogo from "../../assets/whitelogo.png";
 import quote from "../../assets/quote.png";
 import edge from "../../assets/edge.png";
-import Form from "../../components/form/Form";
+import SignUpForm from "../../components/form/SignUpForm";
 import Header from "../../components/Header/Header";
 
 import "./register.css";
@@ -41,7 +41,7 @@ export default class Register extends Component {
             subtitle="For the purpose of gamers regulation, your details are required."
           />
           <div className="line"></div>
-          <Form
+          <SignUpForm
             newField={true}
             status="Repeat password"
             star="*"
@@ -52,7 +52,7 @@ export default class Register extends Component {
             <p className="or-p">or</p>
           </div>
           <button className="reg-login-btn" onClick={this.props.handleRoute}>
-            <img src={google} alt="" className="reg-google" />{" "}
+            <img src={google} alt="" className="reg-google" />
             <p className="flex-2">login</p>
           </button>
         </div>

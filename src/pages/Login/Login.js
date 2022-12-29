@@ -9,7 +9,7 @@ import quote2 from "../../assets/quote2.png";
 import logo from "../../assets/logo2.png";
 
 import linkedin from "../../assets/linkedin.png";
-import Form from "../../components/form/Form";
+import LoginForm from "../../components/form/LoginForm";
 import Logo from "../../components/Logo/Logo";
 
 export default class Login extends Component {
@@ -54,7 +54,7 @@ export default class Login extends Component {
             <div className="or">
               <p className="or-p">or</p>
             </div>
-            <Form btn="Login" />
+            <LoginForm btn="Login" />
             <p>
               Don’t have an account?
               <span onClick={this.props.handleRoute}>Register</span>

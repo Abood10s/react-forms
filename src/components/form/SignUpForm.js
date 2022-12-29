@@ -32,7 +32,7 @@ const defaults = {
   status: "",
   error: "",
 };
-class Form extends Component {
+class SignUpForm extends Component {
   state = {
     email: "",
     password: "",
@@ -193,4 +193,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default SignUpForm;
