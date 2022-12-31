@@ -8,7 +8,7 @@
     bottom: 0;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.4rem;
+    padding: 1rem 0.2rem;
 }
 
 .controller {
@@ -44,14 +44,14 @@
     height: 30px;
 }
 
-.line {
+.sidebar-line {
     position: absolute;
     background-color: #FFFFFF;
     top: 10%;
     bottom: 10%;
-    left: 90px;
+    left: 80px;
     height: 80%;
-    width: 5px;
+    width: 4px;
     border-radius: 44px;
     box-shadow: 2px 4px rgba(0, 0, 0, 0.25);
 }

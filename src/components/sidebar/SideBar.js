@@ -25,7 +25,7 @@ export default class SideBar extends Component {
           <img src={moon} alt="" />
           <img src={sun} alt="" />
         </div>
-        <div className="line"></div>
+        <div className="sidebar-line"></div>
       </div>
     );
   }
