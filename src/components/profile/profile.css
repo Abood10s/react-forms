@@ -1,0 +1,18 @@
+.profile-cont {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 1.2rem;
+}
+
+.profile-cont img {
+    height: 50px;
+    cursor: pointer;
+}
+
+.profile-cont p {
+    text-align: right;
+    font-weight: bold;
+}

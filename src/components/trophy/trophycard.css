@@ -1,0 +1,78 @@
+.trophy-cont {
+    background: url('../../assets/Games/trophy.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    height: 85%;
+    position: relative;
+    overflow: hidden;
+    margin: 0.7em auto;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.card-txt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.436);
+    padding: 1em;
+}
+
+.card-txt h4,
+.card-txt p {
+    text-transform: uppercase;
+    text-align: start;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 3px;
+}
+
+.trophy-section {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 20%;
+    align-items: center;
+    gap: 1.5em;
+    width: 60%;
+}
+
+.trophy-section>img {
+    height: 80px;
+    z-index: 999;
+}
+
+.green {
+    position: absolute;
+    top: -110px;
+    right: 70px;
+    transform: scale(8.7);
+    z-index: 1;
+}
+
+.txt {
+    color: #FFFFFF;
+    text-align: end;
+    font-size: 16px;
+    z-index: 2158;
+    font-weight: bold;
+}
+
+.trophy-cont:hover {
+    background-position: 0 -10px;
+}
+
+@media only screen and (max-width: 800px) {
+    .trophy-cont {
+        height: 300px;
+        width: 90%;
+    }
+    .trophy-section {
+        gap: 3em;
+    }
+}

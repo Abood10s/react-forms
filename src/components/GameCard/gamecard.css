@@ -1,0 +1,31 @@
+.card-cont {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 210px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-card-txt {
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 14px;
+    width: 75%;
+}
+
+.game-card-txt p {
+    text-align: end;
+    font-weight: 1500;
+}
+
+.card-cont:hover {
+    background-position: 0px -10px;
+}

@@ -49,6 +49,7 @@ function LoginForm() {
       })
       .then(() => {
         setFormState({ ...defaults });
+        document.title = "Your Games";
         navigate("/games");
       })
       .catch(function (err) {

@@ -1,3 +1,27 @@
-.games {
-    color: red;
+.main-content {
+    margin-left: 90px;
+    padding: 0 1.5rem;
+}
+
+.new-games {
+    margin: 1rem auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    margin: 1rem auto;
+}
+
+@media only screen and (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+    }
 }
