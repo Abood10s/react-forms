@@ -73,13 +73,16 @@ class SignUpForm extends Component {
       this.setState({ error: "please enter stronger password" });
     }
     schema
-      .validate({
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-        repeatpassword: this.state.repeatpassword,
-        checkbox: this.state.checkbox,
-      })
+      .validate(
+        {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          repeatpassword: this.state.repeatpassword,
+          checkbox: this.state.checkbox,
+        } /*,
+        { abortEarly: false } */
+      )
       .then((val) => {
         this.setState({ ...defaults });
       })
@@ -107,7 +110,7 @@ class SignUpForm extends Component {
     });
   };
   render() {
-    const { newField, status, star, btn, check } = this.props;
+    const { status, star, btn } = this.props;
 
     return (
       <form className="form-cont" onSubmit={this.handleSubmit}>
@@ -156,38 +159,35 @@ class SignUpForm extends Component {
               {this.state.status}
             </label>
           </div>
-          {newField && (
-            <>
-              <label htmlFor="repeatpassword" className="input-label">
-                {status}
-                {star}
-              </label>
-              <input
-                name="repeatpassword"
-                type="password"
-                placeholder={status}
-                className="input"
-                id="repeatpassword"
-                minLength={1}
-                onChange={this.handleChange}
-                value={this.state.repeatpassword}
-              />
-            </>
-          )}
+
+          <label htmlFor="repeatpassword" className="input-label">
+            {status}
+            {star}
+          </label>
+          <input
+            name="repeatpassword"
+            type="password"
+            placeholder={status}
+            className="input"
+            id="repeatpassword"
+            minLength={1}
+            onChange={this.handleChange}
+            value={this.state.repeatpassword}
+          />
         </div>
-        {check && (
-          <section className="agree">
-            <input
-              name="agreed"
-              type="checkbox"
-              id="checkbox"
-              onChange={this.onValueChange}
-              checked={this.state.checkbox}
-            />
-            <label htmlFor="checkbox">I agree to terms & conditions</label>
-          </section>
-        )}
-        <Button title={btn} check={this.checkPasswordStrength} />
+
+        <section className="agree">
+          <input
+            name="agreed"
+            type="checkbox"
+            id="checkbox"
+            onChange={this.onValueChange}
+            checked={this.state.checkbox}
+          />
+          <label htmlFor="checkbox">I agree to terms & conditions</label>
+        </section>
+
+        <Button btn="Sign up" check={this.checkPasswordStrength} />
       </form>
     );
   }

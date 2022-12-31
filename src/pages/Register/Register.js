@@ -10,6 +10,7 @@ import SignUpForm from "../../components/form/SignUpForm";
 import Header from "../../components/Header/Header";
 
 import "./register.css";
+import { Link } from "react-router-dom";
 export default class Register extends Component {
   render() {
     return (
@@ -51,10 +52,10 @@ export default class Register extends Component {
           <div className="or">
             <p className="or-p">or</p>
           </div>
-          <button className="reg-login-btn" onClick={this.props.handleRoute}>
+          <Link className="reg-login-btn" to="/">
             <img src={google} alt="" className="reg-google" />
             <p className="flex-2">login</p>
-          </button>
+          </Link>
         </div>
       </div>
     );

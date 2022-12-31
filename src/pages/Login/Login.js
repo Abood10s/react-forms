@@ -11,6 +11,7 @@ import logo from "../../assets/logo2.png";
 import linkedin from "../../assets/linkedin.png";
 import LoginForm from "../../components/form/LoginForm";
 import Logo from "../../components/Logo/Logo";
+import { Link } from "react-router-dom";
 
 export default class Login extends Component {
   render() {
@@ -57,7 +58,9 @@ export default class Login extends Component {
             <LoginForm btn="Login" />
             <p>
               Don’t have an account?
-              <span onClick={this.props.handleRoute}>Register</span>
+              <Link className="span" to="/register">
+                Register
+              </Link>
             </p>
           </div>
         </div>
