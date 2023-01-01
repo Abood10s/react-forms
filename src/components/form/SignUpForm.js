@@ -73,23 +73,21 @@ class SignUpForm extends Component {
       this.setState({ error: "please enter stronger password" });
     }
     schema
-      .validate(
-        {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          repeatpassword: this.state.repeatpassword,
-          checkbox: this.state.checkbox,
-        } /*,
-        { abortEarly: false } */
-      )
-      .then((val) => {
+      .validate({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        repeatpassword: this.state.repeatpassword,
+        checkbox: this.state.checkbox,
+      })
+      .then(() => {
         this.setState({ ...defaults });
       })
       .catch(function (err) {
         alert(err.errors);
       });
   };
+
   handleChange = (e) => {
     const { id, value, checked } = e.target;
     if (id === "checkbox") {
@@ -110,7 +108,7 @@ class SignUpForm extends Component {
     });
   };
   render() {
-    const { status, star, btn } = this.props;
+    const { status, star } = this.props;
 
     return (
       <form className="form-cont" onSubmit={this.handleSubmit}>
@@ -143,7 +141,6 @@ class SignUpForm extends Component {
             onKeyUp={this.validate}
             value={this.state.password}
           />
-          {this.state.error && <p className="error-p">{this.state.error}</p>}
 
           <div
             className="strength"
@@ -175,6 +172,7 @@ class SignUpForm extends Component {
             value={this.state.repeatpassword}
           />
         </div>
+        {this.state.error && <p className="error-p">{this.state.error}</p>}
 
         <section className="agree">
           <input
@@ -187,7 +185,11 @@ class SignUpForm extends Component {
           <label htmlFor="checkbox">I agree to terms & conditions</label>
         </section>
 
-        <Button btn="Sign up" check={this.checkPasswordStrength} />
+        <Button
+          btn="Sign up"
+          check={this.checkPasswordStrength}
+          type="submit"
+        />
       </form>
     );
   }

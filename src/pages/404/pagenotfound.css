@@ -1,0 +1,12 @@
+.errorpage {
+    width: 70%;
+    margin: 10em auto;
+}
+
+.errorpage h1,
+.errorpage p {
+    text-align: center;
+    color: blueviolet;
+    margin: 1em 0;
+    font-weight: bold;
+}

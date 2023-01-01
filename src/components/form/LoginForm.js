@@ -53,7 +53,10 @@ function LoginForm() {
         navigate("/games");
       })
       .catch(function (err) {
-        alert(err.errors);
+        setFormState({
+          ...formState,
+          error: err.errors,
+        });
       });
   };
 
