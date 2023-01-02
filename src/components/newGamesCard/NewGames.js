@@ -10,7 +10,7 @@ import godofwar from "../../assets/Games/godofwar.png";
 export default class NewGames extends Component {
   render() {
     return (
-      <div>
+      <div className="games-scroll">
         <Heading title="NEW GAMES" />
         <section className="games-cards">
           <GameCard

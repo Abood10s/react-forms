@@ -75,4 +75,10 @@
     .trophy-section {
         gap: 3em;
     }
+    .trophy-cont:hover {
+        background-position: center;
+    }
+    .trophy-section {
+        width: 90%;
+    }
 }
