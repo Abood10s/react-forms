@@ -10,23 +10,26 @@ import godofwar from "../../assets/Games/godofwar.png";
 export default class NewGames extends Component {
   render() {
     return (
-      <div className="games-scroll">
+      <div>
         <Heading title="NEW GAMES" />
-        <section className="games-cards">
-          <GameCard
-            img={godofwar}
-            body="Join in the new DLC with Kratos to learn more about him and his future."
-          />
-          <GameCard
-            img={superman}
-            body="Be part of the Suicide Squad and kill the Justice League!
+
+        <div className="games-scroll">
+          <section className="games-cards">
+            <GameCard
+              img={godofwar}
+              body="Join in the new DLC with Kratos to learn more about him and his future."
+            />
+            <GameCard
+              img={superman}
+              body="Be part of the Suicide Squad and kill the Justice League!
 -Amanda Waller"
-          />
-          <GameCard
-            img={spiderman}
-            body="Miles Morales discovers powers from his mentor, Peter Parker. Master his unique, bio-electric venom blast attacks."
-          />
-        </section>
+            />
+            <GameCard
+              img={spiderman}
+              body="Miles Morales discovers powers from his mentor, Peter Parker. Master his unique, bio-electric venom blast attacks."
+            />
+          </section>
+        </div>
       </div>
     );
   }
