@@ -4,9 +4,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    margin: 1rem 1rem;
-    margin-left: 80px;
     width: 80%;
+    margin: 1rem auto;
     padding: 0 1rem;
     position: fixed;
     top: -16px;
@@ -22,7 +21,7 @@
 .profile-link:link,
 .profile-link:active {
     text-decoration: none;
-    color: #123;
+    color: #fff;
 }
 
 .right-profile {
@@ -34,6 +33,10 @@
 .profile-cont img {
     height: 50px;
     cursor: pointer;
+}
+
+.userName {
+    color: blueviolet;
 }
 
 .profile-cont p {
@@ -59,18 +62,20 @@
     list-style: none;
     position: absolute;
     bottom: -370%;
-    background-color: #e5e0e0;
+    background-color: #123;
     padding: 0.5rem 1rem;
     width: 150px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 2px;
     z-index: 500;
     transition: all ease 0.3s;
     font-weight: bold;
+    color: #fff;
+    font-size: 15px;
 }
 
 .profile-ul .profile-inner-ul li {
-    margin: 0.3rem auto;
+    margin: 0.5rem auto;
     transition: all ease 0.2s;
     width: 90%;
 }

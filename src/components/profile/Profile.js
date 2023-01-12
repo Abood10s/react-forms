@@ -24,7 +24,7 @@ export default class Profile extends Component {
           </div>
           <div>
             <p>Welcome back,</p>
-            <p>{name}</p>
+            <p className="userName">{name}</p>
           </div>
         </div>
         <ul className="profile-ul">

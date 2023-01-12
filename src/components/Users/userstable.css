@@ -27,9 +27,20 @@
 .link {
     text-decoration: underline;
     color: blueviolet;
+    font-weight: bold;
 }
 
 .delete {
     font-weight: bold;
     color: red;
+}
+
+.delete:hover {
+    text-decoration: underline;
+}
+
+.users-count {
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
 }
