@@ -48,6 +48,8 @@ export default class Register extends Component {
             star="*"
             btn="Register Account"
             check={true}
+            isAdmin={this.props.isAdmin}
+            login={this.props.login}
           />
           <div className="or">
             <p className="or-p">or</p>

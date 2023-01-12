@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import Button from "../Button/Button";
 import "./form.css";
 import * as yup from "yup";
+import axios from "axios";
+import Loader from "../loader/Loader";
 
 //Regex
 const strongRegex = new RegExp(
-  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})"
 );
 const mediumRegex = new RegExp(
-  "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
+  "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})"
 );
 let schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
+  password: yup.string().min(6).required(),
   repeatpassword: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
@@ -23,6 +25,7 @@ let schema = yup.object().shape({
     .required(),
 });
 const defaults = {
+  name: "",
   email: "",
   password: "",
   repeatpassword: "",
@@ -30,10 +33,11 @@ const defaults = {
   strength: 0,
   color: "transparent",
   status: "",
-  error: "",
+  errors: [],
 };
 class SignUpForm extends Component {
   state = {
+    name: "",
     email: "",
     password: "",
     repeatpassword: "",
@@ -41,7 +45,8 @@ class SignUpForm extends Component {
     strength: 0,
     color: "red",
     status: "",
-    error: "",
+    errors: [],
+    isLoading: false,
   };
 
   validate = () => {
@@ -70,7 +75,7 @@ class SignUpForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.status === "weak") {
-      this.setState({ error: "please enter stronger password" });
+      this.setState({ errors: "please enter stronger password" });
     }
     schema
       .validate({
@@ -80,11 +85,28 @@ class SignUpForm extends Component {
         repeatpassword: this.state.repeatpassword,
         checkbox: this.state.checkbox,
       })
-      .then(() => {
+      .then(async ({ name, email, password }) => {
         this.setState({ ...defaults });
+        this.setState({ isLoading: true });
+        const res = await axios.post(
+          "https://react-tt-api.onrender.com/api/users/signup",
+          {
+            name,
+            email,
+            password,
+          }
+        );
+        if (res) {
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("isAdmin", res.data.isAdmin);
+          localStorage.setItem("name", res.data.name);
+          localStorage.setItem("id", res.data._id);
+          this.setState({ isLoading: false });
+          this.props.login();
+        }
       })
-      .catch(function (err) {
-        alert(err.errors);
+      .catch((err) => {
+        this.setState({ errors: err.errors });
       });
   };
 
@@ -112,6 +134,24 @@ class SignUpForm extends Component {
 
     return (
       <form className="form-cont" onSubmit={this.handleSubmit}>
+        {this.state.errors && <p className="error-p">{this.state.errors}</p>}
+
+        <div className="input-cont">
+          <label htmlFor="name" className="input-label">
+            Name{star}
+          </label>
+          <input
+            name="name"
+            type="text"
+            placeholder="write your name"
+            className="input"
+            id="name"
+            onChange={this.handleChange}
+            value={this.state.name}
+            required
+            minLength={4}
+          />
+        </div>
         <div className="input-cont">
           <label htmlFor="email" className="input-label">
             Your Email{star}
@@ -172,7 +212,6 @@ class SignUpForm extends Component {
             value={this.state.repeatpassword}
           />
         </div>
-        {this.state.error && <p className="error-p">{this.state.error}</p>}
 
         <section className="agree">
           <input
@@ -184,12 +223,16 @@ class SignUpForm extends Component {
           />
           <label htmlFor="checkbox">I agree to terms & conditions</label>
         </section>
-
-        <Button
-          btn="Sign up"
-          check={this.checkPasswordStrength}
-          type="submit"
-        />
+        {this.state.isLoading ? (
+          <Loader />
+        ) : (
+          <Button
+            btn="Sign up"
+            check={this.checkPasswordStrength}
+            type="submit"
+            handleSubmit={this.handleSubmit}
+          />
+        )}
       </form>
     );
   }

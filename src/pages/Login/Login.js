@@ -55,7 +55,11 @@ export default class Login extends Component {
             <div className="or">
               <p className="or-p">or</p>
             </div>
-            <LoginForm btn="Login" />
+            <LoginForm
+              btn="Login"
+              login={this.props.login}
+              isAuthentecated={this.props.isAuthentecated}
+            />
             <p>
               Don’t have an account?
               <Link className="span" to="/register">

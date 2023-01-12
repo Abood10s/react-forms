@@ -1,7 +1,7 @@
 .register-all-cont {
     display: flex;
     width: 80%;
-    height: 95vh;
+    height: 97vh;
     margin: 0.5rem auto;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
     gap: 1em;
@@ -72,7 +72,7 @@
     padding: 0 2rem;
     width: 50%;
     text-align: center;
-    margin: 0.5rem auto;
+    margin: 1rem auto 0.5rem auto;
 }
 
 .or::before {

@@ -1,114 +1,126 @@
 import * as yup from "yup";
 import "./loginform.css";
-import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
-import { useState } from "react";
-
+import axios from "axios";
+import React, { Component } from "react";
+import Loader from "../loader/Loader";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
+  password: yup.string().min(6).required(),
 });
 
-const defaults = {
-  email: "",
-  password: "",
-  strength: 0,
-  color: "transparent",
-  status: "",
-  error: "",
-};
-
-function LoginForm() {
-  const navigate = useNavigate();
-  const [formState, setFormState] = useState({
+export default class LoginForm extends Component {
+  state = {
+    name: "",
     email: "",
     password: "",
     strength: 0,
-    color: "red",
+    color: "transparent",
     status: "",
     error: "",
-  });
+    isLoading: false,
+  };
 
-  const handleChange = (e) => {
+  handleChange = (e) => {
     const { id, value } = e.target;
-    setFormState({
-      ...formState,
+    this.setState({
       [id]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    if (formState.status === "weak") {
-      setFormState({ ...formState, error: "please enter stronger password" });
-    }
     schema
       .validate({
-        email: formState.email,
-        password: formState.password,
+        email: this.state.email,
+        password: this.state.password,
       })
-      .then(() => {
-        setFormState({ ...defaults });
-        document.title = "Your Games";
-        navigate("/games");
+      .then(async ({ password }) => {
+        this.setState({ isLoading: true });
+        const res = await axios.post(
+          "https://react-tt-api.onrender.com/api/users/login",
+          {
+            email: this.state.email,
+            password,
+          }
+        );
+
+        if (res) {
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("isAdmin", res.data.isAdmin);
+          localStorage.setItem("id", res.data._id);
+          localStorage.setItem("name", res.data.name);
+          this.setState({ isLoading: false });
+          this.props.login();
+        }
       })
-      .catch(function (err) {
-        setFormState({
-          ...formState,
-          error: err.errors,
-        });
+      .catch((error) => {
+        if (error.errors) {
+          this.setState({ error: error.errors });
+        } else {
+          this.setState({ error: [error.message] });
+        }
       });
   };
 
-  return (
-    <form className="form-cont" onSubmit={handleSubmit}>
-      <div className="input-cont">
-        <label htmlFor="email" className="input-label">
-          Your Email
-        </label>
-        <input
-          name="email"
-          type="email"
-          placeholder="write your email"
-          className="input"
-          id="email"
-          onChange={handleChange}
-          value={formState.email}
-        />
-      </div>
-      <div className="input-cont">
-        <label htmlFor="password" className="input-label">
-          Your Password
-        </label>
-        <input
-          name="password"
-          type="password"
-          placeholder="password"
-          className="input"
-          id="password"
-          minLength={1}
-          onChange={handleChange}
-          value={formState.password}
-        />
-        {formState.error && <p className="error-p">{formState.error}</p>}
-
-        <div
-          className="strength"
-          style={{
-            width: `${formState.strength}`,
-            backgroundColor: `${formState.color}`,
-          }}
-        >
-          <label
-            style={{ color: `${formState.color}` }}
-            className="strength-label"
-          >
-            {formState.status}
+  render() {
+    return (
+      <form className="form-cont" onSubmit={this.handleSubmit}>
+        <div className="input-cont">
+          <label htmlFor="email" className="input-label">
+            Your Email
           </label>
+          <input
+            name="email"
+            type="email"
+            placeholder="write your email"
+            className="input"
+            id="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
         </div>
-        <Button btn="Login" />
-      </div>
-    </form>
-  );
+        <div className="input-cont">
+          <label htmlFor="password" className="input-label">
+            Your Password
+          </label>
+          <input
+            name="password"
+            type="password"
+            placeholder="password"
+            className="input"
+            id="password"
+            minLength={1}
+            onChange={this.handleChange}
+            value={this.state.password}
+          />
+          {this.state.error && <p className="error-p">{this.state.error}</p>}
+
+          <div
+            className="strength"
+            style={{
+              width: `${this.state.strength}`,
+              backgroundColor: `${this.state.color}`,
+            }}
+          >
+            <label
+              style={{ color: `${this.state.color}` }}
+              className="strength-label"
+            >
+              {this.state.status}
+            </label>
+          </div>
+          {this.state.isLoading ? (
+            <Loader />
+          ) : (
+            <Button
+              btn="Login"
+              type="submit"
+              handleSubmit={this.handleSubmit}
+            />
+          )}
+        </div>
+      </form>
+    );
+  }
 }
-export default LoginForm;
