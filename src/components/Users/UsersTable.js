@@ -3,6 +3,7 @@ import "./userstable.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
+import { API_URL } from "../../config/API";
 
 class UsersTable extends Component {
   state = {
@@ -14,12 +15,12 @@ class UsersTable extends Component {
     this.setState({ users: filtered });
   };
   componentDidMount() {
+    const token = localStorage.getItem("token");
     this.setState({ isLoading: true });
     axios
-      .get("https://react-tt-api.onrender.com/api/users", {
+      .get(`${API_URL}/users`, {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmMzYTZiMWQ1MjI3MDgxNzBlZjY4OCIsImlhdCI6MTY3MzM0Mzg4MywiZXhwIjoxNjc1OTM1ODgzfQ.YcBTFlLOKoDQeCaUCELv3-Y4ujNPadS7-QXRm4UBlIM",
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {

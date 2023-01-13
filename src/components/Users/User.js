@@ -4,6 +4,8 @@ import SideBar from "../sidebar/SideBar";
 import Profile from "../profile/Profile";
 import guy from "../../assets/guy.jpg";
 import Loader from "../loader/Loader";
+import { API_URL } from "../../config/API";
+
 import "./user.css";
 import axios from "axios";
 const UserDetails = () => {
@@ -22,7 +24,7 @@ class User extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     axios
-      .get(`https://react-tt-api.onrender.com/api/users/${this.state.id}`, {
+      .get(`${API_URL}/users/${this.state.id}`, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmMzYTZiMWQ1MjI3MDgxNzBlZjY4OCIsImlhdCI6MTY3MzUwNDIyNiwiZXhwIjoxNjc2MDk2MjI2fQ.J5-RguMcAkGQgbFWSxFytxn3v8X-d2gawnxO5ZxEbhA",

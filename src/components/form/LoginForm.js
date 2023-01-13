@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import axios from "axios";
 import React, { Component } from "react";
 import Loader from "../loader/Loader";
+import { API_URL } from "../../config/API";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(6).required(),
@@ -37,13 +38,10 @@ export default class LoginForm extends Component {
       })
       .then(async ({ password }) => {
         this.setState({ isLoading: true });
-        const res = await axios.post(
-          "https://react-tt-api.onrender.com/api/users/login",
-          {
-            email: this.state.email,
-            password,
-          }
-        );
+        const res = await axios.post(`${API_URL}/users/login`, {
+          email: this.state.email,
+          password,
+        });
 
         if (res) {
           localStorage.setItem("token", res.data.token);

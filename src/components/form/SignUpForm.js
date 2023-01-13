@@ -4,6 +4,7 @@ import "./form.css";
 import * as yup from "yup";
 import axios from "axios";
 import Loader from "../loader/Loader";
+import { API_URL } from "../../config/API";
 
 //Regex
 const strongRegex = new RegExp(
@@ -88,14 +89,11 @@ class SignUpForm extends Component {
       .then(async ({ name, email, password }) => {
         this.setState({ ...defaults });
         this.setState({ isLoading: true });
-        const res = await axios.post(
-          "https://react-tt-api.onrender.com/api/users/signup",
-          {
-            name,
-            email,
-            password,
-          }
-        );
+        const res = await axios.post(`${API_URL}/users/signup`, {
+          name,
+          email,
+          password,
+        });
         if (res) {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("isAdmin", res.data.isAdmin);

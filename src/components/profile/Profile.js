@@ -20,28 +20,20 @@ export default class Profile extends Component {
       <div className="profile-cont">
         <div className="right-profile">
           <div>
-            <img src={profilepic} alt="" />
+            <Link className="profile-link" to={`user/${id}`}>
+              <img src={profilepic} alt="" />
+            </Link>
           </div>
           <div>
             <p>Welcome back,</p>
             <p className="userName">{name}</p>
           </div>
         </div>
-        <ul className="profile-ul">
-          <i class="fa-sharp fa-solid fa-gear gear" onClick={this.showMenu}></i>
-          {this.state.openMenu && (
-            <ul className="profile-inner-ul">
-              <li>
-                <Link className="profile-link" to={`user/${id}`}>
-                  <i class="fa-solid fa-user"></i>Profile
-                </Link>
-              </li>
-              <li onClick={this.props.logout}>
-                <i class="fa-solid fa-right-from-bracket"></i>Log out
-              </li>
-            </ul>
-          )}
-        </ul>
+
+        <button onClick={this.props.logout} className="logout">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>{" "}
+          <p className="logout-p">Log out</p>
+        </button>
       </div>
     );
   }

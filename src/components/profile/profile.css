@@ -5,7 +5,7 @@
     align-items: center;
     gap: 0.5rem;
     width: 80%;
-    margin: 1rem auto;
+    margin: 1rem 3rem;
     padding: 0 1rem;
     position: fixed;
     top: -16px;
@@ -13,6 +13,15 @@
     z-index: 999;
     background-color: #F9F9F9;
     padding-top: 1rem;
+}
+
+.logout {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    background-color: blueviolet;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
 .profile-link:focus,
@@ -44,47 +53,24 @@
     font-weight: bold;
 }
 
-.profile-ul {
-    transition: all ease 0.3s;
-    position: relative;
-    cursor: pointer;
+.logout-p {
+    display: inline-block;
 }
 
-.profile-ul .gear {
-    transition: all ease 0.3s;
+@media only screen and (max-width: 850px) {
+    .profile-cont {
+        margin: 1rem 0.5rem;
+    }
 }
 
-.profile-ul .gear:active {
-    transform: rotate(360deg);
-}
-
-.profile-ul .profile-inner-ul {
-    list-style: none;
-    position: absolute;
-    bottom: -370%;
-    background-color: #123;
-    padding: 0.5rem 1rem;
-    width: 150px;
-    text-align: center;
-    border-radius: 2px;
-    z-index: 500;
-    transition: all ease 0.3s;
-    font-weight: bold;
-    color: #fff;
-    font-size: 15px;
-}
-
-.profile-ul .profile-inner-ul li {
-    margin: 0.5rem auto;
-    transition: all ease 0.2s;
-    width: 90%;
-}
-
-.profile-ul .profile-inner-ul li i {
-    margin: 0 0.3rem;
-}
-
-.profile-ul .profile-inner-ul li:hover {
-    transform: scale(0.96);
-    border-bottom: 1px solid #000;
+@media only screen and (max-width: 550px) {
+    .profile-cont {
+        margin: 1rem 0.2rem;
+    }
+    .logout {
+        padding: 0.5rem 0.5rem;
+    }
+    .logout-p {
+        display: none;
+    }
 }
