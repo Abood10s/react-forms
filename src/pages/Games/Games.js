@@ -23,11 +23,20 @@ export default class Games extends Component {
   render() {
     return (
       <div className="games">
-        <SideBar />
-        <section className="main-content">
+        <SideBar
+          setDarkTheme={this.props.setDarkTheme}
+          setLightTheme={this.props.setLightTheme}
+          theme={this.props.theme}
+        />
+        <section
+          className={`main-content ${
+            this.props.theme === "dark" ? "dark" : "light"
+          }`}
+        >
           <Profile
             isAuthentecated={this.props.isAuthentecated}
             logout={this.props.logout}
+            theme={this.props.theme}
           />
           {this.state.isAdmin ? (
             <UsersTable />

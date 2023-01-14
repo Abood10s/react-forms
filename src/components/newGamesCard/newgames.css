@@ -1,12 +1,12 @@
 .games-cards {
     display: grid;
-    grid-template-columns: repeat(3, 450px);
+    grid-template-columns: repeat(3, 510px);
     gap: 1.5em;
     padding: 0.3rem 0;
 }
 
 .games-scroll {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .games-scroll::-webkit-scrollbar {

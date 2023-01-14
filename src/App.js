@@ -11,6 +11,7 @@ class App extends Component {
   state = {
     isAuthentecated: false,
     isAdmin: false,
+    theme: "light",
   };
   componentDidMount() {
     const token = localStorage.getItem("token");
@@ -22,6 +23,16 @@ class App extends Component {
   logout = () => {
     localStorage.clear();
     this.setState({ isAuthentecated: false });
+  };
+  setDarkTheme = () => {
+    this.setState({ theme: "dark" });
+    document.body.style.backgroundColor = "#454545";
+    document.body.style.color = "#D8D8D8";
+  };
+  setLightTheme = () => {
+    this.setState({ theme: "light" });
+    document.body.style.backgroundColor = "#F9F9F9";
+    document.body.style.color = "#000";
   };
   render() {
     return (
@@ -65,6 +76,9 @@ class App extends Component {
                 <Games
                   isAuthentecated={this.state.isAuthentecated}
                   logout={this.logout}
+                  setDarkTheme={this.setDarkTheme}
+                  setLightTheme={this.setLightTheme}
+                  theme={this.state.theme}
                 />
               }
             />

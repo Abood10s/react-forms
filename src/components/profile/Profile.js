@@ -17,7 +17,11 @@ export default class Profile extends Component {
     const name = localStorage.getItem("name");
 
     return (
-      <div className="profile-cont">
+      <div
+        className={`profile-cont ${
+          this.props.theme === "dark" ? "dark" : "light"
+        }`}
+      >
         <div className="right-profile">
           <div>
             <Link className="profile-link" to={`user/${id}`}>

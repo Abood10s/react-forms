@@ -2,7 +2,11 @@
     margin-left: 90px;
     padding: 0 1.5rem;
     margin-top: 100px;
-    /* overflow-x: hidden; */
+}
+
+.dark {
+    background-color: #454545;
+    color: #D8D8D8;
 }
 
 .new-games {

@@ -12,7 +12,9 @@ import sun from "../../assets/Games/sun.PNG";
 export default class SideBar extends Component {
   render() {
     return (
-      <div className="sidebar">
+      <div
+        className={`sidebar ${this.props.theme === "dark" ? "dark" : "light"}`}
+      >
         <div>
           <img src={controller} alt="" className="controller" />
         </div>
@@ -22,8 +24,8 @@ export default class SideBar extends Component {
           <img src={piece} alt="" />
         </div>
         <div className="sidebar-theme">
-          <img src={moon} alt="" />
-          <img src={sun} alt="" />
+          <img src={moon} alt="dark" onClick={this.props.setDarkTheme} />
+          <img src={sun} alt="light" onClick={this.props.setLightTheme} />
         </div>
         <div className="sidebar-line"></div>
       </div>
